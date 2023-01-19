@@ -1,0 +1,125 @@
+---
+title: "Analisis Ekspor Rumput Laut dan Ganggang terhadap GDP Indonesia"
+subtitle: "Metode Penelitian Politeknik APP Jakarta"
+author: "M.Gibran.V.A"
+date: 2023-01-19
+number-sections: true
+format:
+  html: default
+  docx: default
+editor: visual
+---
+
+## Pendahuluan
+
+### Latar belakang
+
+Pertumbuhan ekonomi dapat diartikan sebagai kenaikan nilai GDP (Groos Domestic Product) dan GNP (Gross National Product) tanpa melihat apakah kenaikan tersebut lebih besar atau lebih kecil dari kenaikan jumlah penduduk atau perubahan pola dan struktur ekonomi terjadi atau tidak. Pertumbuhan ekonomi tersebut merupakan salah satu masalah klasik yang banyak di alami oleh negara berkembang, tidak terkecuali Indonesia. Definisi lain dari pertumbuhan ekonomi yaitu mengartikan pertumbuhan ekonomi sebagai suatu proses peningkatan produksi barang dan jasa dalam kegiatan ekonomi masyarakat suatu wilayah (Djojohadikusumo, 1994). Peningkatan pertumbuhan ekonomi dilihat dari peninkatan hasil produksi dan pendapatan yang diterima oleh masyarakat.
+
+### Ruang lingkup
+
+Lingkup bahasan ini tentang Ekspor Rumput Laut dan Ganggang Negara Indonesia terhadap Negara Tiongkok
+
+### Rumusan masalah
+
+1.  Apakah ekspor ganggang laut mempengaruhi GDP Indonesia?
+2.  Apakah ekspor Ganggang Laut ke Negara Tiongkok setiap tahunnya naik atau turun?
+3.  Apakah Negara Indonesia mengekspor ganggang laut ke Tiongkok setiap tahunya
+
+### Tujuan dan manfaat penelitian
+
+Tujuan dari penelitian ini adalah untuk mengetahui seberapa besar pengaruh ekspor Rumput Laut dan Ganggang Indonesia ke Tiongkok dalam periode tahun 2012-2021 terhadap GDP Indonesia dalam periode yang sama dan juga pembaca dapat mengetahui bahwa ekspor rumput laut yang dilakukan Indonesia berpotensi baik dan layak untuk di maksimalkan dalam kapasitas ekspornya ke Tiongkok. Manfaat penelitian ini adalah agar pembaca mengerti seberapa besar pengaruh ekspor rumput laut dan ganggang yang dilakukan pemerintah maupun masyarakat terhadap GDP Indonesia
+
+### Package
+
+Ini tidak wajib ada di packages yang digunakan antara lain sebagai berikut:
+
+```{r}
+setwd('C://Users/Gib/Downloads/Documents/GDP DAN BPS REGRESI')
+library(tidyverse)
+library(readxl)
+library(writexl)
+ dat<-read_excel('BPS GANGGANG LAUT.xlsx')
+
+```
+
+## Studi pustaka
+
+Studi pustaka
+
+A. Deskripsi Teori
+
+1\. Analisis pengaruh ekspor terhadap pertumbuhan ekonomi Indonesia
+
+Peningkatan kinerja ekspor Indonesia dapat dilakukan dengan berbagai cara, salah satunya adalah dengan perbaikan sistem administrasi ekspor, peningkatan riset dan pengembangan produk Indonesia, peningkatan sarana dan prasarana infrastruktur, stabilitas nilai tukar dan perluasan pasar non tradisional, termasuk perbaikan struktur ekspor komoditas.
+
+2\. Analisis Pengaruh Ekspor dan Kurs Terhadap Cadangan Devisa Indonesia
+
+Dengan adanya perdangan internasional dapat menambah cadangan devisa negara misalnya dengan melakukan ekspor. Cadangan devisa merupakan jumlah keseluruhan aktiva luar negeri yang dapat digunakan kapan saja untuk membiayai ketidakseimbangan neraca pembayaran, melakukan intervensi di pasar valuta asing dalam rangka menjaga stabilitas moneter dan tujuan lainnya.cadangan devisa dikuasai oleh otoritas moneter.
+
+## Metode penelitian
+
+### DATA
+
+Data GDP Indonesia
+
+| 2012       | 2013        | 2014        | 2015        | 2016        | 2017        | 2018       | 2019       | 2020        | 2021        |
+|------------|-------------|-------------|-------------|-------------|-------------|------------|------------|-------------|-------------|
+| 9,1787E+11 | 9,12524E+11 | 8,90815E+11 | 8,60854E+11 | 9,31877E+11 | 1,01562E+12 | 1,0423E+12 | 1,1191E+12 | 1,05869E+12 | 1,18609E+12 |
+
+Data Ekspor Indonesia ke Tiongkok
+
+| 2012      | 2013      | 2014      | 2015      | 2016      | 2017      | 2018      | 2019      | 2020      | 2021      |
+|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+| 103 505,7 | 130 118,9 | 136 619,1 | 147 958,6 | 139 950,3 | 148 452,0 | 157 654,5 | 155 039,8 | 148 306,9 | 175 563,3 |
+
+![](poltekapp.jpg)
+
+```{r}
+#| label: fig-mpg
+#| fig-cap: "City and highway mileage for 38 popular models of cars.Color by number of cylinders"
+ dat<-read_excel('GDP INDONESIA.xlsx')
+ggplot(data=dat,aes(x=Ekspor,y=GDP)) +
+  geom_point(alpha=0.5, size=1, color='black') + # setiap nambah command, selalu kasih tanda +
+  labs(title="Ekspor Terhadap GDP",
+       x="Ekspor",
+       y="GDP ",
+       caption = "sumber: Badan Pusat Statistika")# yang terakhir ga perlu +
+```
+
+### Metode analisis
+
+Metode yang dipilih adalah regresi univariat atau Ordinary Least Square (OLS) dengan 1 variabel independen. Penelitian ini merbaksud mencari hubungan antara hwy dan cty. Spesifikasi yang dilakukan adalah:
+
+$$
+y_{t}=\beta_0 + \beta_1 x_t+\mu_t
+$$ di mana $y_t$ adalah hwy dan $x_t$ adalah cty.
+
+## Pembahasan
+
+### Pembahasan masalah
+
+Dikarenakan pada penelitian ini saya menggunakan metode OLS, maka saya hanya menghubungkan angka Ekspor Indonesia ke Jepang tahun 2012-2021 dengan angka GDP Indonesia pada periode yang sama.
+
+### Analisis masalah
+
+Hasil regresinya adalah
+
+```{r}
+reg<-lm(hwy~cty,data=mpg)
+summary(reg)
+```
+
+## Kesimpulan
+
+Dari hasil regresi diatas dapat diketahui bahwa Ekspor Rumput Laut dan Ganggang Indonesia ke Tiongkok terhadap GDP Indonesia adalah 1,05894E+12 atau sebesar 0,10% terhadap total rata rata GDP Indonesia terhadap tahun 2012-2021
+
+## Referensi
+
+https://www.krisna.or.id/courses/metopel/slides/
+
+https://id.wikipedia.org/wiki/Ekspor
+
+https://www.bps.go.id/statictable/2019/02/25/2025/ekspor-rumput-laut-dan-ganggang-lainnya-menurut-negara-tujuan-utama-2012-2020.html
+
+https://www.bps.go.id/statictable/2019/02/25/2025/ekspor-rumput-laut-dan-ganggang-lainnya-menurut-negara-tujuan-utama-2012-2020.html
